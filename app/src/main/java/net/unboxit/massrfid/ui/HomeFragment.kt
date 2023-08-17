@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import coil.load
+import coil.transform.CircleCropTransformation
 import dagger.hilt.android.AndroidEntryPoint
 import net.unboxit.massrfid.common.network.NetworkResult
 import net.unboxit.massrfid.databinding.FragmentHomeBinding
@@ -28,7 +30,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-//        return inflater.inflate(R.layout.fragment_home, container, false)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root;
     }
@@ -47,6 +48,9 @@ class HomeFragment : Fragment() {
                 is NetworkResult.Success -> {
                     result.data?.let {
                         Log.d("Debug", it.message)
+                        binding.ivDog.load(it.message) {
+                            crossfade(true)
+                        }
                     }
                 }
                 is NetworkResult.Error -> {}
