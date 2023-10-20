@@ -2,8 +2,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MassRfid" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">@color/yellow</item>
+         <item name="colorSecondary">@color/yellow80</item>
+         <item name="colorTertiary">@color/orange</item>
     </style>
-
     <style name="Theme.MassRfid" parent="Base.Theme.MassRfid" />
 </resources>

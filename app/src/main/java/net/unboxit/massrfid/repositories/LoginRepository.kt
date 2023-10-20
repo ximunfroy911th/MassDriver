@@ -1,8 +1,8 @@
 package net.unboxit.massrfid.repositories
 
 import dagger.hilt.android.scopes.ActivityRetainedScoped
-import net.unboxit.massrfid.common.network.LoginDataSource
 import net.unboxit.massrfid.common.data.Result
+import net.unboxit.massrfid.common.network.LoginDataSource
 import net.unboxit.massrfid.model.LoggedInUser
 import javax.inject.Inject
 
@@ -13,7 +13,8 @@ import javax.inject.Inject
 
 @ActivityRetainedScoped
 class LoginRepository @Inject constructor(
-    val dataSource: LoginDataSource) {
+    val dataSource: LoginDataSource
+) {
 
     // in-memory cache of the loggedInUser object
     var user: LoggedInUser? = null

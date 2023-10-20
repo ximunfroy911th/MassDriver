@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import net.unboxit.massrfid.common.network.BaseApiResponse
-import net.unboxit.massrfid.common.network.NetworkResult
 import net.unboxit.massrfid.common.network.DogRemoteDataSource
+import net.unboxit.massrfid.common.network.NetworkResult
 import net.unboxit.massrfid.model.DogResponse
 import javax.inject.Inject
 
@@ -17,7 +17,7 @@ class DogRepository @Inject constructor(
 ) : BaseApiResponse() {
     suspend fun getDog(): Flow<NetworkResult<DogResponse>> {
         return flow {
-            emit(safeApiCall{ remoteDataSource.getDog() })
+            emit(safeApiCall { remoteDataSource.getDog() })
         }.flowOn(Dispatchers.IO)
     }
 }

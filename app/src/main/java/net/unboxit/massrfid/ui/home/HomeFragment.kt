@@ -2,10 +2,10 @@ package net.unboxit.massrfid.ui.home
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import coil.load
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,10 +27,10 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root;
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
         homeViewModel.fetchDogResponse()
 
         homeViewModel.response.observe(viewLifecycleOwner) { result ->
-            when(result) {
+            when (result) {
                 is NetworkResult.Success -> {
                     result.data?.let {
                         Log.d("Debug", it.message)
@@ -53,6 +53,7 @@ class HomeFragment : Fragment() {
                         binding.tvTitle.text = "hello"
                     }
                 }
+
                 is NetworkResult.Error -> {}
                 is NetworkResult.Loading -> {}
             }

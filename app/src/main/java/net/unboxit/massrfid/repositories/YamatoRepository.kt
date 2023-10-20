@@ -14,10 +14,10 @@ import javax.inject.Inject
 @ActivityRetainedScoped
 class YamatoRepository @Inject constructor(
     private val remoteDataSource: YamatoRemoteDataSource
-): BaseApiResponse() {
+) : BaseApiResponse() {
     suspend fun getReceiveQuality(): Flow<NetworkResult<ReceiveQualityResponse>> {
         return flow {
-            emit(safeApiCall{ remoteDataSource.getReceiveQuality() })
+            emit(safeApiCall { remoteDataSource.getReceiveQuality() })
         }.flowOn(Dispatchers.IO)
     }
 }

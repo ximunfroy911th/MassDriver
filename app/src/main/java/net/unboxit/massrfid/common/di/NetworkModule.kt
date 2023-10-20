@@ -25,10 +25,12 @@ object NetworkModule {
             .connectTimeout(15, TimeUnit.SECONDS)
             .build()
     }
+
     @Singleton
     @Provides
     fun provideConverterFactory(): GsonConverterFactory =
         GsonConverterFactory.create()
+
     @Singleton
     @Provides
     fun provideRetrofit(
@@ -41,10 +43,12 @@ object NetworkModule {
             .addConverterFactory(gsonConverterFactory)
             .build()
     }
+
     @Singleton
     @Provides
     fun provideYutService(retrofit: Retrofit): DogService =
         retrofit.create(DogService::class.java)
+
     @Singleton
     @Provides
     fun provideYamatoService(retrofit: Retrofit): YamatoService =
