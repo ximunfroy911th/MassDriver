@@ -7,17 +7,17 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import net.unboxit.massrfid.common.network.BaseApiResponse
 import net.unboxit.massrfid.common.network.NetworkResult
-import net.unboxit.massrfid.common.network.DogRemoteDataSource
-import net.unboxit.massrfid.model.DogResponse
+import net.unboxit.massrfid.common.network.YamatoRemoteDataSource
+import net.unboxit.massrfid.model.ReceiveQualityResponse
 import javax.inject.Inject
 
 @ActivityRetainedScoped
-class DogRepository @Inject constructor(
-    private val remoteDataSource: DogRemoteDataSource
-) : BaseApiResponse() {
-    suspend fun getDog(): Flow<NetworkResult<DogResponse>> {
+class YamatoRepository @Inject constructor(
+    private val remoteDataSource: YamatoRemoteDataSource
+): BaseApiResponse() {
+    suspend fun getReceiveQuality(): Flow<NetworkResult<ReceiveQualityResponse>> {
         return flow {
-            emit(safeApiCall{ remoteDataSource.getDog() })
+            emit(safeApiCall{ remoteDataSource.getReceiveQuality() })
         }.flowOn(Dispatchers.IO)
     }
 }

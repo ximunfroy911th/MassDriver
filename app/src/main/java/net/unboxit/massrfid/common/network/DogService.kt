@@ -9,4 +9,7 @@ interface DogService {
     @GET(Constants.RANDOM_URL)
     suspend fun getDog(): Response<DogResponse>
 
+    @GET("/api/hello/world")
+    suspend fun getHelloWorld(): Response<DogResponse>
+
 }

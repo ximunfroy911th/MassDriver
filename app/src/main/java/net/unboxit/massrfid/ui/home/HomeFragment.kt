@@ -1,4 +1,4 @@
-package net.unboxit.massrfid.ui
+package net.unboxit.massrfid.ui.home
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import coil.load
-import coil.transform.CircleCropTransformation
 import dagger.hilt.android.AndroidEntryPoint
 import net.unboxit.massrfid.common.network.NetworkResult
 import net.unboxit.massrfid.databinding.FragmentHomeBinding
@@ -34,8 +33,8 @@ class HomeFragment : Fragment() {
         return binding.root;
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         fetchData()
     }
@@ -51,6 +50,7 @@ class HomeFragment : Fragment() {
                         binding.ivDog.load(it.message) {
                             crossfade(true)
                         }
+                        binding.tvTitle.text = "hello"
                     }
                 }
                 is NetworkResult.Error -> {}

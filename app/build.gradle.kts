@@ -4,6 +4,9 @@ plugins {
     id("kotlin-android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
+    // Add the App Distribution Gradle plugin
+    id("com.google.firebase.appdistribution")
 }
 
 android {
@@ -27,6 +30,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            firebaseAppDistribution {
+                artifactType = "APK"
+                releaseNotes = "Add feature"
+//                releaseNotesFile = "/path/to/releasenotes.txt"
+                testers = "ximunfroy911th@gmail.com"
+            }
         }
     }
     compileOptions {
@@ -55,6 +64,12 @@ dependencies {
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.annotation:annotation:1.6.0")
+
+    implementation("androidx.datastore:datastore-core:1.0.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+//    implementation("androidx.datastore:datastore-preferences-rxjava2:1.0.0")
+    implementation("androidx.datastore:datastore-preferences-rxjava3:1.0.0")
 
     // mvvm
     val coroutinesVersion = "1.4.3"
@@ -92,6 +107,10 @@ dependencies {
 
     //for image rendering
     implementation("io.coil-kt:coil:$coilVersion")
+
+    // Firebase service
+    implementation(platform("com.google.firebase:firebase-bom:32.2.2"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
 
     // Test
     testImplementation("junit:junit:4.13.2")
