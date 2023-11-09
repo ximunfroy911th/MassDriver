@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
         }
         recentlyJobAdapter.setOnClickListener(object : RecentlyJobAdapter.OnClickListener {
             override fun onClick(position: Int, model: RecentlyJobModel) {
-                navController.navigate(R.id.scanFragment)
+                navController.navigate(R.id.scanActivity)
             }
         })
         homeViewModel.jobs.observe(viewLifecycleOwner) {

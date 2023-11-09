@@ -14,17 +14,24 @@
             android:id="@+id/action_homeFragment_to_loginActivity"
             app:destination="@id/loginActivity" />
         <action
-            android:id="@+id/action_homeFragment_to_scanFragment"
-            app:destination="@id/scanFragment" />
+            android:id="@+id/action_homeFragment_to_scanActivity"
+            app:destination="@id/scanActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_selectorActivity"
+            app:destination="@id/selectorActivity" />
     </fragment>
     <activity
         android:id="@+id/loginActivity"
         android:name="net.unboxit.massrfid.ui.login.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
-    <fragment
-        android:id="@+id/scanFragment"
-        android:name="net.unboxit.massrfid.ui.scanning.ScanFragment"
-        android:label="fragment_scan"
-        tools:layout="@layout/fragment_scan" />
+    <activity
+        android:id="@+id/scanActivity"
+        android:name="net.unboxit.massrfid.ui.scanning.ScanActivity"
+        android:label="activity_scan"
+        tools:layout="@layout/activity_scan" />
+    <activity
+        android:id="@+id/selectorActivity"
+        android:name="net.unboxit.massrfid.ui.selector.SelectorActivity"
+        android:label="SelectorActivity" />
 </navigation>
