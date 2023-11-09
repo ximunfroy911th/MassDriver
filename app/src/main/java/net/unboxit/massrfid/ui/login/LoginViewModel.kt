@@ -4,15 +4,19 @@ import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import net.unboxit.massrfid.R
 import net.unboxit.massrfid.common.data.Result
 import net.unboxit.massrfid.repositories.LoginRepository
+import net.unboxit.massrfid.repositories.UserPreferencesRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val loginRepository: LoginRepository
+    private val loginRepository: LoginRepository,
+    private val userPreferencesRepository: UserPreferencesRepository
 ) : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
@@ -26,6 +30,9 @@ class LoginViewModel @Inject constructor(
         val result = loginRepository.login(username, password)
 
         if (result is Result.Success) {
+            viewModelScope.launch {
+                userPreferencesRepository.updateAccessToken("xxxxxxxx")
+            }
             _loginResult.value =
                 LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
         } else {

@@ -6,4 +6,5 @@ plugins {
     id("com.google.gms.google-services") version "4.3.15" apply false
     // Add the dependency for the App Distribution Gradle plugin
     id("com.google.firebase.appdistribution") version "4.0.0" apply false
+    id("androidx.navigation.safeargs") version "2.5.0" apply false
 }
