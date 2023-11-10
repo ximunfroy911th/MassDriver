@@ -54,6 +54,10 @@ class HomeFragment : Fragment() {
         }
         binding.rvRecenlyJob.adapter = recentlyJobAdapter
 
+        binding.floatingActionButton.setOnClickListener {
+            navController.navigate(R.id.selectorActivity)
+        }
+
 //        homeViewModel.response.observe(viewLifecycleOwner) { result ->
 //            when (result) {
 //                is NetworkResult.Success -> {

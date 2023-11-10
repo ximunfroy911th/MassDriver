@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/selectorFragment">
+
+    <activity
+        android:id="@+id/selectorActivity"
+        android:name="net.unboxit.massrfid.ui.selector.SelectorActivity"
+        android:label="SelectorActivity" />
+    <fragment
+        android:id="@+id/selectorFragment"
+        android:name="net.unboxit.massrfid.ui.selector.SelectorFragment"
+        android:label="SelectorFragment" >
+        <action
+            android:id="@+id/action_selectorFragment_to_jobSelectorFragment"
+            app:destination="@id/jobSelectorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobSelectorFragment"
+        android:name="net.unboxit.massrfid.ui.selector.JobSelectorFragment"
+        android:label="JobSelectorFragment" >
+        <action
+            android:id="@+id/action_jobSelectorFragment_to_receiveEntryFragment"
+            app:destination="@id/receiveEntryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiveEntryFragment"
+        android:name="net.unboxit.massrfid.ui.selector.ReceiveEntryFragment"
+        android:label="ReceiveEntryFragment" />
+</navigation>
